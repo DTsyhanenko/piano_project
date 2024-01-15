@@ -1,0 +1,136 @@
+console.log(true && true) returns true 'cause both of them are true
+console.log(true && false) returns false 'cause both of them need to be true to return true otherwise it returns false
+false && true always equal to FALSE 'cause both of them need to be TRUE to return true
+console.log(true || false) returns true 'cause with "or" it returns first truthy value
+undefined is like let a (variable is undefined)
+null is like empty, like let a = null (it's defined to be empty)
+difference between both is minimal
+Comparison: 1 == 2 returns false, 1 == 1 returns true, 1 != 1 returns false, 1 < 2 (true) or 1 > 2 (false)
+
+////////////////
+
+You can write arrow functions in one line:
+let myFunction = (a, b) => a + b
+console.log(1, 2) // 3
+
+Same for functions without arguments:
+let myFunction = () => {
+    console.log(1 + 2)
+}
+myFunction()
+
+////////////////
+
+One of important things is the callback functions (functions in functions):
+function printName(name, callback) {
+  callback(name)
+}
+
+function newName(value) {
+  console.log("Hello", value)
+}
+
+printName("Dima", newName)
+
+////////////////
+
+HOISTING is about the positioning of functions in code while browser read your code:
+console.log(sum(1,2))
+
+function sum(a,b) {
+    return a + b
+}
+This will be working as fine, as js takes all functions and put them above the function calls. This is the hoisting. BUT hoisting is not working with arrow functions because arrow functions declared as variables and it cannot access function before initialization. If you want your function be hoisted on the top use "function" key-word instead of arrow-functions.
+
+////////////////
+
+SCOPING (for example the difference between var and let). Global scope where is all of your code is and function scope where a variable can be accessed only in this function. (You can see from inside to outside of scope but not reverse. It's a one way door)
+function sayHi(name) {
+    let result = "Hi " + name + a
+    console.log(result)
+}
+let a = 1
+sayHi("Kyle")
+
+The a variable will be use even if it's outside the local scope becausewe can see outside but not reverse.
+
+////////////////
+
+CLOSURES: same course as scoping, you need to understand that you can read outside (from the inside of scope) and access variables and not inside from outside:
+let a = 1
+
+function print() {
+    console.log(a)
+}
+
+a = 2
+print() // 2
+
+function print(variable) {
+  let variable3 = "variable 3"
+  return function func(variable2) {
+    console.log(variable)
+    console.log(variable2)
+    console.log(variable3)
+  }
+}
+
+let a = print("variable 1")
+a("variable 2")
+
+console.log(a) // 1, 2, 3
+
+////////////////
+
+TYPE COERCION: It's all about types and type conversion. Important keywords: typeof, parseInt(), parseFloat(), {variable}.toString(), implicit conversion
+
+Always use === or !== to checking the values to avoid type conversion, unless you are checking for null or undefined. In this case use == or !=
+
+////////////////
+
+NaN: to check if something is NaN (not a number) use a function in js: isNaN({value you want to check})
+
+////////////////
+
+ARRAY: to get element of an array of array you need to write it like this
+
+const ar = [
+  [1, 2, 3, 4, 5],
+  [6, 7, 8, 9, 10],
+  [11, 12, 13, 14, 15],
+]
+
+console.log(ar[0][3]) // 4
+
+console.log(array.length) // to get length of an array
+
+////////////////
+
+Load and executing of js on page through normal, async and defer:
+
+<script async src="#"></script>
+<script defer src="#"></script>
+<script src="#"></script>
+Normally we put script tag at the bottom of the body tag. But the problem with this solution is, that the script will be downloaded after the body tag is parsed. So with defer we achive the same result but the script is already downloaded. So the perfect solution is to put script in head tag with defer attribute = quickest download and same result as with at the bottom of body.
+
+////////////////
+
+const div-class = document.getElementsByClassName("div") = (none)array with elements with same class
+with Array.from(div-class) creates actual array where you can use array methods
+
+////////////////
+
+You can use data attributes in html elements and interact with them through js.
+
+<button data-btn></button>
+<button data-test="5555">
+
+element.dataset is a function to interact with data attribute
+
+////////////////
+
+Recursion is very important topic. You will see it not often but it will be asked on interviews (Video 51 of webdevsim)
+
+////////////////
+
+Topic 52 in basics: very important short circuit evalution
